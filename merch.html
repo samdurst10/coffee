@@ -115,6 +115,25 @@
     color: var(--coral);
     transform: translateY(-1px);
   }
+  .nav-btn.active{
+    color: var(--coral);
+    font-weight: 700;
+    text-decoration: underline;
+    text-underline-offset: 4px;
+  }
+  .hl{
+    position: relative;
+    z-index: 1;
+  }
+  .hl::before{
+    content: "";
+    position: absolute;
+    z-index: -1;
+    background: rgba(37, 121, 155, 0.42);
+    filter: url(#rough);
+  }
+  .hl-navbtn{ display: inline-block; }
+  .hl-navbtn::before{ inset: 12% -10%; transform: rotate(-1.5deg); }
   .nav-right{
     display:flex;
     align-items:center;
@@ -498,11 +517,11 @@
 
     </a>
     <div class="nav-links">
-      <a href="menu.html" class="nav-btn">menu</a>
-      <a href="find-us.html" class="nav-btn">find us</a>
-      <a href="story.html" class="nav-btn">story</a>
-      <a href="alerts.html" class="nav-btn">alerts</a>
-      <a href="merch.html" class="nav-btn">merch</a>
+      <a href="menu.html" class="nav-btn hl hl-navbtn">menu</a>
+      <a href="find-us.html" class="nav-btn hl hl-navbtn">find us</a>
+      <a href="story.html" class="nav-btn hl hl-navbtn">story</a>
+      <a href="alerts.html" class="nav-btn hl hl-navbtn">alerts</a>
+      <a href="merch.html" class="nav-btn hl hl-navbtn active">merch</a>
     </div>
   </nav>
 </header>
