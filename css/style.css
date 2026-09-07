@@ -399,3 +399,12 @@
     height: 14px;
     margin: 0 auto;
   }
+  /* ---------- SHARED: STORY TEXT (used on story + alerts pages) ---------- */
+  .story-text{
+    font-family: 'Courier Prime', monospace;
+    font-size: 0.95rem;
+    line-height: 1.7;
+    color: var(--ink);
+    margin: 0 0 18px;
+    text-align: center;
+  }
