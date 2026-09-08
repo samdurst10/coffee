@@ -358,12 +358,30 @@
     outline-offset: 2px;
   }  /* ---------- MENU PAGE ---------- */
   .menu-page{
-    padding-top: 40px;
-    padding-bottom: 72px;
+    padding: 42px 20px 72px;
   }
   .menu-simple{
     max-width: 560px;
     margin: 0 auto;
+  }
+  .page-title{
+    font-family: 'Mesa Lane', 'Allora', 'Bagel Fat One', cursive;
+    text-transform: lowercase;
+    text-align: center;
+    font-size: 4rem;
+    line-height: 1;
+    margin: 0 0 40px;
+    color: var(--foam);
+    -webkit-text-stroke: 3px var(--coral);
+    text-shadow:
+      -2px -2px 0 var(--coral),
+       2px -2px 0 var(--coral),
+      -2px  2px 0 var(--coral),
+       2px  2px 0 var(--coral),
+       0    3px 0 var(--coral);
+  }
+  @media (max-width: 640px){
+    .page-title{ font-size: 2.8rem; }
   }
   .menu-section{
     padding: 36px 0;
@@ -520,15 +538,16 @@
       <a href="menu.html" class="nav-btn hl hl-navbtn">menu</a>
       <a href="find-us.html" class="nav-btn hl hl-navbtn">find us</a>      <a href="alerts.html" class="nav-btn hl hl-navbtn">alerts</a>
       <a href="merch.html" class="nav-btn hl hl-navbtn active">merch</a>
+      <a href="contact.html" class="nav-btn hl hl-navbtn">contact</a>
     </div>
   </nav>
 </header>
 
 <main class="wrap menu-page">
   <div class="menu-simple">
+    <h1 class="page-title">merch</h1>
 
     <div class="menu-section">
-      <h2 class="menu-section-title">merch</h2>
       <p class="story-text" style="text-align:center;">Redfish gear is brewing — hats, tees, and mugs coming soon. Check back for our first drop.</p>
       <div class="merch-placeholder-grid">
         <div class="merch-placeholder-card">
