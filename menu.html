@@ -10,7 +10,7 @@
 <meta property="og:description" content="The Redfish Coffee menu — drip coffee, espresso, matcha, and refreshers, served hot or iced.">
 <meta property="og:image" content="assets/img/favicon.png">
 <meta property="og:type" content="website">
-<meta name="theme-color" content="#FAF6E2">
+<meta name="theme-color" content="#FAF0D2">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=IM+Fell+English:ital@0;1&family=Courier+Prime:wght@400;700&family=Chewy&family=Bagel+Fat+One&display=swap" rel="stylesheet">
@@ -30,7 +30,7 @@
     font-display: swap;
   }
 :root{
-  --sand: #FAF6E2;
+  --sand: #FAF0D2;
   --foam: #F7E6CB;
   --coral: #B20E19;
   --ink: #683629;
@@ -122,22 +122,29 @@ body::after{
   .nav-btn{
     display:inline-block;
     font-family: 'Mesa Lane', 'Allora', 'Bagel Fat One', cursive;
-    font-size: 0.85rem;
-    color: var(--sky-blue);
+    font-size: 1rem;
+    color: #fff;
     padding: 4px 2px;
     background: transparent;
-    transition: color 0.15s ease, transform 0.15s ease;
+    -webkit-text-stroke: 2px var(--rose);
+    transition: transform 0.15s ease;
   }
-  .nav-btn:hover{
-    color: var(--rose);
+  .nav-btn:hover,
+  .nav-btn:active{
+    color: #fff;
+    -webkit-text-stroke: 2px var(--coral);
     transform: translateY(-1px);
   }
   .nav-btn.active{
-    color: var(--coral);
+    color: #fff;
+    -webkit-text-stroke: 2px var(--coral);
     font-weight: 700;
-    font-size: 1rem;
+    font-size: 1.15rem;
     text-decoration: underline;
     text-underline-offset: 4px;
+  }
+  .hl-navbtn.active::before{
+    background: #fff;
   }
   .hl{
     position: relative;
@@ -154,8 +161,12 @@ body::after{
   .hl-navbtn::before{
     inset: 12% -10%;
     transform: rotate(-1.5deg);
-    background: rgba(255,255,255,0.85);
+    background: transparent;
     transition: background 0.15s ease;
+  }
+  .hl-navbtn:hover::before,
+  .hl-navbtn:active::before{
+    background: #fff;
   }
 
   .nav-right{
@@ -204,16 +215,24 @@ body::after{
     transform: scale(1.05) rotate(-1deg);
   }
   .logo .mark{
+    display: block;
     width: auto;
     height: 34px;
+    aspect-ratio: 388 / 200;
     flex-shrink: 0;
-    color: var(--coral);
     transition: transform 0.25s ease;
-    filter:
-      drop-shadow(1.4px 0 0 var(--rose))
-      drop-shadow(-1.4px 0 0 var(--rose))
-      drop-shadow(0 1.4px 0 var(--rose))
-      drop-shadow(0 -1.4px 0 var(--rose));
+    background-color: var(--coral);
+    background-image: url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2224%22%20height%3D%2224%22%20viewBox%3D%220%200%2024%2024%22%3E%3Ccircle%20cx%3D%2210.9%22%20cy%3D%2213.4%22%20r%3D%221.6%22%20fill%3D%22%23FFFFFF%22%2F%3E%3Ccircle%20cx%3D%2210.8%22%20cy%3D%2220.5%22%20r%3D%220.8%22%20fill%3D%22%23FFFFFF%22%2F%3E%3Ccircle%20cx%3D%2215.1%22%20cy%3D%2219.0%22%20r%3D%220.7%22%20fill%3D%22%23C97B92%22%2F%3E%3Ccircle%20cx%3D%223.4%22%20cy%3D%2212.9%22%20r%3D%221.6%22%20fill%3D%22%23B20E19%22%2F%3E%3Ccircle%20cx%3D%2214.3%22%20cy%3D%229.5%22%20r%3D%221.1%22%20fill%3D%22%232E8B99%22%2F%3E%3Ccircle%20cx%3D%2215.0%22%20cy%3D%2220.0%22%20r%3D%220.7%22%20fill%3D%22%23B20E19%22%2F%3E%3Ccircle%20cx%3D%224.6%22%20cy%3D%225.8%22%20r%3D%220.6%22%20fill%3D%22%23FFFFFF%22%2F%3E%3Ccircle%20cx%3D%227.8%22%20cy%3D%2214.2%22%20r%3D%220.8%22%20fill%3D%22%232E8B99%22%2F%3E%3Ccircle%20cx%3D%2215.4%22%20cy%3D%2212.0%22%20r%3D%221.3%22%20fill%3D%22%23FFFFFF%22%2F%3E%3Ccircle%20cx%3D%2215.7%22%20cy%3D%229.8%22%20r%3D%221.2%22%20fill%3D%22%23B20E19%22%2F%3E%3Ccircle%20cx%3D%2217.0%22%20cy%3D%227.6%22%20r%3D%220.9%22%20fill%3D%22%23C97B92%22%2F%3E%3Ccircle%20cx%3D%220.7%22%20cy%3D%2213.5%22%20r%3D%220.7%22%20fill%3D%22%23B20E19%22%2F%3E%3Ccircle%20cx%3D%2220.3%22%20cy%3D%229.3%22%20r%3D%221.7%22%20fill%3D%22%23B20E19%22%2F%3E%3Ccircle%20cx%3D%225.1%22%20cy%3D%2222.2%22%20r%3D%220.7%22%20fill%3D%22%23FFFFFF%22%2F%3E%3Ccircle%20cx%3D%2223.5%22%20cy%3D%229.5%22%20r%3D%220.7%22%20fill%3D%22%232E8B99%22%2F%3E%3Ccircle%20cx%3D%2218.7%22%20cy%3D%226.5%22%20r%3D%220.7%22%20fill%3D%22%23C97B92%22%2F%3E%3Ccircle%20cx%3D%220.4%22%20cy%3D%229.8%22%20r%3D%221.6%22%20fill%3D%22%232E8B99%22%2F%3E%3Ccircle%20cx%3D%225.9%22%20cy%3D%222.4%22%20r%3D%220.7%22%20fill%3D%22%23FFFFFF%22%2F%3E%3Ccircle%20cx%3D%224.3%22%20cy%3D%2213.4%22%20r%3D%221.1%22%20fill%3D%22%232E8B99%22%2F%3E%3Ccircle%20cx%3D%2223.6%22%20cy%3D%2218.5%22%20r%3D%221.1%22%20fill%3D%22%23FFFFFF%22%2F%3E%3Ccircle%20cx%3D%222.8%22%20cy%3D%2210.1%22%20r%3D%220.8%22%20fill%3D%22%23C97B92%22%2F%3E%3Ccircle%20cx%3D%2220.7%22%20cy%3D%2223.4%22%20r%3D%221.3%22%20fill%3D%22%23B20E19%22%2F%3E%3Ccircle%20cx%3D%225.1%22%20cy%3D%229.5%22%20r%3D%221.5%22%20fill%3D%22%23B20E19%22%2F%3E%3Ccircle%20cx%3D%221.0%22%20cy%3D%223.5%22%20r%3D%221.1%22%20fill%3D%22%23B20E19%22%2F%3E%3Ccircle%20cx%3D%2218.5%22%20cy%3D%227.9%22%20r%3D%220.9%22%20fill%3D%22%23B20E19%22%2F%3E%3Ccircle%20cx%3D%221.8%22%20cy%3D%225.0%22%20r%3D%221.3%22%20fill%3D%22%23B20E19%22%2F%3E%3Ccircle%20cx%3D%2214.4%22%20cy%3D%228.9%22%20r%3D%221.1%22%20fill%3D%22%23FFFFFF%22%2F%3E%3Ccircle%20cx%3D%2220.0%22%20cy%3D%223.3%22%20r%3D%221.0%22%20fill%3D%22%232E8B99%22%2F%3E%3Ccircle%20cx%3D%227.5%22%20cy%3D%225.5%22%20r%3D%221.3%22%20fill%3D%22%232E8B99%22%2F%3E%3Ccircle%20cx%3D%223.8%22%20cy%3D%2215.1%22%20r%3D%221.2%22%20fill%3D%22%23FFFFFF%22%2F%3E%3Ccircle%20cx%3D%2221.2%22%20cy%3D%2214.5%22%20r%3D%221.1%22%20fill%3D%22%23B20E19%22%2F%3E%3Ccircle%20cx%3D%222.6%22%20cy%3D%2212.3%22%20r%3D%220.9%22%20fill%3D%22%23FFFFFF%22%2F%3E%3Ccircle%20cx%3D%226.2%22%20cy%3D%2219.8%22%20r%3D%221.3%22%20fill%3D%22%23C97B92%22%2F%3E%3Ccircle%20cx%3D%2212.5%22%20cy%3D%2222.3%22%20r%3D%221.7%22%20fill%3D%22%232E8B99%22%2F%3E%3Ccircle%20cx%3D%225.5%22%20cy%3D%2213.4%22%20r%3D%221.5%22%20fill%3D%22%23B20E19%22%2F%3E%3Ccircle%20cx%3D%226.7%22%20cy%3D%2222.0%22%20r%3D%220.8%22%20fill%3D%22%23B20E19%22%2F%3E%3Ccircle%20cx%3D%221.7%22%20cy%3D%229.9%22%20r%3D%220.9%22%20fill%3D%22%23B20E19%22%2F%3E%3Ccircle%20cx%3D%224.2%22%20cy%3D%228.9%22%20r%3D%221.2%22%20fill%3D%22%232E8B99%22%2F%3E%3Ccircle%20cx%3D%222.2%22%20cy%3D%223.3%22%20r%3D%221.1%22%20fill%3D%22%23C97B92%22%2F%3E%3Ccircle%20cx%3D%2215.8%22%20cy%3D%2216.6%22%20r%3D%221.2%22%20fill%3D%22%232E8B99%22%2F%3E%3Ccircle%20cx%3D%2214.2%22%20cy%3D%2222.2%22%20r%3D%221.1%22%20fill%3D%22%23C97B92%22%2F%3E%3Ccircle%20cx%3D%2216.8%22%20cy%3D%2223.1%22%20r%3D%220.6%22%20fill%3D%22%23B20E19%22%2F%3E%3Ccircle%20cx%3D%2215.3%22%20cy%3D%220.9%22%20r%3D%220.9%22%20fill%3D%22%23B20E19%22%2F%3E%3Ccircle%20cx%3D%225.5%22%20cy%3D%2217.5%22%20r%3D%221.3%22%20fill%3D%22%23B20E19%22%2F%3E%3Ccircle%20cx%3D%2221.2%22%20cy%3D%222.3%22%20r%3D%221.0%22%20fill%3D%22%23B20E19%22%2F%3E%3Ccircle%20cx%3D%2212.1%22%20cy%3D%220.9%22%20r%3D%220.8%22%20fill%3D%22%23B20E19%22%2F%3E%3Ccircle%20cx%3D%2215.5%22%20cy%3D%2213.1%22%20r%3D%220.8%22%20fill%3D%22%23B20E19%22%2F%3E%3Ccircle%20cx%3D%220.5%22%20cy%3D%2219.2%22%20r%3D%221.3%22%20fill%3D%22%23B20E19%22%2F%3E%3Ccircle%20cx%3D%228.3%22%20cy%3D%223.9%22%20r%3D%221.6%22%20fill%3D%22%23B20E19%22%2F%3E%3Ccircle%20cx%3D%228.2%22%20cy%3D%222.5%22%20r%3D%220.7%22%20fill%3D%22%23B20E19%22%2F%3E%3Ccircle%20cx%3D%2220.1%22%20cy%3D%2214.4%22%20r%3D%221.4%22%20fill%3D%22%23B20E19%22%2F%3E%3Ccircle%20cx%3D%2217.4%22%20cy%3D%2212.8%22%20r%3D%221.6%22%20fill%3D%22%23B20E19%22%2F%3E%3Ccircle%20cx%3D%229.2%22%20cy%3D%2213.2%22%20r%3D%221.4%22%20fill%3D%22%23B20E19%22%2F%3E%3Ccircle%20cx%3D%2213.8%22%20cy%3D%2216.8%22%20r%3D%220.6%22%20fill%3D%22%23B20E19%22%2F%3E%3Ccircle%20cx%3D%225.6%22%20cy%3D%227.1%22%20r%3D%220.7%22%20fill%3D%22%23B20E19%22%2F%3E%3Ccircle%20cx%3D%226.8%22%20cy%3D%2215.2%22%20r%3D%221.0%22%20fill%3D%22%23B20E19%22%2F%3E%3Ccircle%20cx%3D%2215.5%22%20cy%3D%222.0%22%20r%3D%221.1%22%20fill%3D%22%232E8B99%22%2F%3E%3Ccircle%20cx%3D%2210.4%22%20cy%3D%221.9%22%20r%3D%220.7%22%20fill%3D%22%232E8B99%22%2F%3E%3Ccircle%20cx%3D%223.2%22%20cy%3D%225.5%22%20r%3D%221.2%22%20fill%3D%22%232E8B99%22%2F%3E%3Ccircle%20cx%3D%2222.5%22%20cy%3D%2213.8%22%20r%3D%221.0%22%20fill%3D%22%232E8B99%22%2F%3E%3Ccircle%20cx%3D%2223.1%22%20cy%3D%221.4%22%20r%3D%221.5%22%20fill%3D%22%232E8B99%22%2F%3E%3Ccircle%20cx%3D%227.1%22%20cy%3D%223.7%22%20r%3D%220.7%22%20fill%3D%22%232E8B99%22%2F%3E%3Ccircle%20cx%3D%227.5%22%20cy%3D%2219.4%22%20r%3D%220.8%22%20fill%3D%22%232E8B99%22%2F%3E%3Ccircle%20cx%3D%2213.9%22%20cy%3D%2215.3%22%20r%3D%221.0%22%20fill%3D%22%232E8B99%22%2F%3E%3Ccircle%20cx%3D%2213.1%22%20cy%3D%221.8%22%20r%3D%220.7%22%20fill%3D%22%232E8B99%22%2F%3E%3Ccircle%20cx%3D%225.1%22%20cy%3D%2216.2%22%20r%3D%221.0%22%20fill%3D%22%232E8B99%22%2F%3E%3Ccircle%20cx%3D%229.8%22%20cy%3D%225.0%22%20r%3D%220.8%22%20fill%3D%22%23B20E19%22%2F%3E%3Ccircle%20cx%3D%226.2%22%20cy%3D%229.3%22%20r%3D%221.3%22%20fill%3D%22%23B20E19%22%2F%3E%3Ccircle%20cx%3D%2211.7%22%20cy%3D%2210.2%22%20r%3D%221.2%22%20fill%3D%22%23B20E19%22%2F%3E%3Ccircle%20cx%3D%229.1%22%20cy%3D%229.4%22%20r%3D%221.3%22%20fill%3D%22%23B20E19%22%2F%3E%3Ccircle%20cx%3D%2220.2%22%20cy%3D%228.2%22%20r%3D%221.5%22%20fill%3D%22%23B20E19%22%2F%3E%3Ccircle%20cx%3D%2212.7%22%20cy%3D%2218.4%22%20r%3D%221.1%22%20fill%3D%22%23B20E19%22%2F%3E%3Ccircle%20cx%3D%229.7%22%20cy%3D%226.6%22%20r%3D%220.6%22%20fill%3D%22%23B20E19%22%2F%3E%3Ccircle%20cx%3D%225.1%22%20cy%3D%2223.5%22%20r%3D%221.1%22%20fill%3D%22%23B20E19%22%2F%3E%3Ccircle%20cx%3D%2214.5%22%20cy%3D%2223.2%22%20r%3D%221.0%22%20fill%3D%22%23B20E19%22%2F%3E%3Ccircle%20cx%3D%224.1%22%20cy%3D%2218.8%22%20r%3D%221.2%22%20fill%3D%22%23B20E19%22%2F%3E%3Ccircle%20cx%3D%2223.3%22%20cy%3D%2222.4%22%20r%3D%221.3%22%20fill%3D%22%23B20E19%22%2F%3E%3Ccircle%20cx%3D%221.2%22%20cy%3D%220.8%22%20r%3D%221.1%22%20fill%3D%22%23B20E19%22%2F%3E%3Ccircle%20cx%3D%221.5%22%20cy%3D%222.3%22%20r%3D%221.1%22%20fill%3D%22%23C97B92%22%2F%3E%3Ccircle%20cx%3D%222.8%22%20cy%3D%2221.4%22%20r%3D%220.7%22%20fill%3D%22%23C97B92%22%2F%3E%3Ccircle%20cx%3D%2212.8%22%20cy%3D%228.1%22%20r%3D%221.6%22%20fill%3D%22%23C97B92%22%2F%3E%3Ccircle%20cx%3D%222.4%22%20cy%3D%2214.3%22%20r%3D%220.8%22%20fill%3D%22%23C97B92%22%2F%3E%3Ccircle%20cx%3D%227.7%22%20cy%3D%2210.8%22%20r%3D%221.6%22%20fill%3D%22%23C97B92%22%2F%3E%3Ccircle%20cx%3D%2218.8%22%20cy%3D%220.8%22%20r%3D%221.6%22%20fill%3D%22%23C97B92%22%2F%3E%3Ccircle%20cx%3D%2213.7%22%20cy%3D%226.5%22%20r%3D%221.5%22%20fill%3D%22%23C97B92%22%2F%3E%3Ccircle%20cx%3D%2219.1%22%20cy%3D%225.1%22%20r%3D%221.3%22%20fill%3D%22%23C97B92%22%2F%3E%3Ccircle%20cx%3D%227.7%22%20cy%3D%229.6%22%20r%3D%221.5%22%20fill%3D%22%23C97B92%22%2F%3E%3Ccircle%20cx%3D%2212.3%22%20cy%3D%2216.3%22%20r%3D%221.3%22%20fill%3D%22%23C97B92%22%2F%3E%3C%2Fsvg%3E");
+    background-size: 10px 10px;
+    background-repeat: repeat;
+    -webkit-mask-image: url("assets/img/logo.png");
+    mask-image: url("assets/img/logo.png");
+    -webkit-mask-size: contain;
+    mask-size: contain;
+    -webkit-mask-repeat: no-repeat;
+    mask-repeat: no-repeat;
+    -webkit-mask-position: center;
+    mask-position: center;
   }
   .logo:hover .mark{
     transform: rotate(6deg);
@@ -304,7 +323,7 @@ body::after{
   .footer-links a:hover{ color: var(--coral); }
   .footer-handle{
     display: inline-block;
-    font-size: 1.2rem !important;
+    font-size: 0.55rem !important;
     font-weight: 700;
     color: var(--coral) !important;
     font-family: 'Mesa Lane', 'Allora', 'Bagel Fat One', cursive;
@@ -381,7 +400,7 @@ body::after{
   font-size: 4rem;
   line-height: 1;
   margin: 0 0 40px;
-  color: var(--foam);
+  color: #fff;
   -webkit-text-stroke: 3px var(--coral);
   text-shadow:
     -2px -2px 0 var(--coral),
@@ -416,7 +435,7 @@ body::after{
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 8px 22px;
-    padding: 56px 34px 70px;
+    padding: 56px 34px 110px;
   }
   .menu-col{
     display: flex;
@@ -470,22 +489,28 @@ body::after{
   }
   .menu-card-footer{
     text-align: center;
-    margin-top: -34px;
+    margin-top: -85px;
     position: relative;
     z-index: 2;
   }
   .menu-mascot{
     width: 84px;
-    height: auto;
-    color: var(--coral);
+    aspect-ratio: 388 / 200;
     display: block;
     margin: 0 auto 6px;
     transition: transform 0.25s ease;
-    filter:
-      drop-shadow(1.6px 0 0 var(--rose))
-      drop-shadow(-1.6px 0 0 var(--rose))
-      drop-shadow(0 1.6px 0 var(--rose))
-      drop-shadow(0 -1.6px 0 var(--rose));
+    background-color: var(--coral);
+    background-image: url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2224%22%20height%3D%2224%22%20viewBox%3D%220%200%2024%2024%22%3E%3Ccircle%20cx%3D%2210.9%22%20cy%3D%2213.4%22%20r%3D%221.6%22%20fill%3D%22%23FFFFFF%22%2F%3E%3Ccircle%20cx%3D%2210.8%22%20cy%3D%2220.5%22%20r%3D%220.8%22%20fill%3D%22%23FFFFFF%22%2F%3E%3Ccircle%20cx%3D%2215.1%22%20cy%3D%2219.0%22%20r%3D%220.7%22%20fill%3D%22%23C97B92%22%2F%3E%3Ccircle%20cx%3D%223.4%22%20cy%3D%2212.9%22%20r%3D%221.6%22%20fill%3D%22%23B20E19%22%2F%3E%3Ccircle%20cx%3D%2214.3%22%20cy%3D%229.5%22%20r%3D%221.1%22%20fill%3D%22%232E8B99%22%2F%3E%3Ccircle%20cx%3D%2215.0%22%20cy%3D%2220.0%22%20r%3D%220.7%22%20fill%3D%22%23B20E19%22%2F%3E%3Ccircle%20cx%3D%224.6%22%20cy%3D%225.8%22%20r%3D%220.6%22%20fill%3D%22%23FFFFFF%22%2F%3E%3Ccircle%20cx%3D%227.8%22%20cy%3D%2214.2%22%20r%3D%220.8%22%20fill%3D%22%232E8B99%22%2F%3E%3Ccircle%20cx%3D%2215.4%22%20cy%3D%2212.0%22%20r%3D%221.3%22%20fill%3D%22%23FFFFFF%22%2F%3E%3Ccircle%20cx%3D%2215.7%22%20cy%3D%229.8%22%20r%3D%221.2%22%20fill%3D%22%23B20E19%22%2F%3E%3Ccircle%20cx%3D%2217.0%22%20cy%3D%227.6%22%20r%3D%220.9%22%20fill%3D%22%23C97B92%22%2F%3E%3Ccircle%20cx%3D%220.7%22%20cy%3D%2213.5%22%20r%3D%220.7%22%20fill%3D%22%23B20E19%22%2F%3E%3Ccircle%20cx%3D%2220.3%22%20cy%3D%229.3%22%20r%3D%221.7%22%20fill%3D%22%23B20E19%22%2F%3E%3Ccircle%20cx%3D%225.1%22%20cy%3D%2222.2%22%20r%3D%220.7%22%20fill%3D%22%23FFFFFF%22%2F%3E%3Ccircle%20cx%3D%2223.5%22%20cy%3D%229.5%22%20r%3D%220.7%22%20fill%3D%22%232E8B99%22%2F%3E%3Ccircle%20cx%3D%2218.7%22%20cy%3D%226.5%22%20r%3D%220.7%22%20fill%3D%22%23C97B92%22%2F%3E%3Ccircle%20cx%3D%220.4%22%20cy%3D%229.8%22%20r%3D%221.6%22%20fill%3D%22%232E8B99%22%2F%3E%3Ccircle%20cx%3D%225.9%22%20cy%3D%222.4%22%20r%3D%220.7%22%20fill%3D%22%23FFFFFF%22%2F%3E%3Ccircle%20cx%3D%224.3%22%20cy%3D%2213.4%22%20r%3D%221.1%22%20fill%3D%22%232E8B99%22%2F%3E%3Ccircle%20cx%3D%2223.6%22%20cy%3D%2218.5%22%20r%3D%221.1%22%20fill%3D%22%23FFFFFF%22%2F%3E%3Ccircle%20cx%3D%222.8%22%20cy%3D%2210.1%22%20r%3D%220.8%22%20fill%3D%22%23C97B92%22%2F%3E%3Ccircle%20cx%3D%2220.7%22%20cy%3D%2223.4%22%20r%3D%221.3%22%20fill%3D%22%23B20E19%22%2F%3E%3Ccircle%20cx%3D%225.1%22%20cy%3D%229.5%22%20r%3D%221.5%22%20fill%3D%22%23B20E19%22%2F%3E%3Ccircle%20cx%3D%221.0%22%20cy%3D%223.5%22%20r%3D%221.1%22%20fill%3D%22%23B20E19%22%2F%3E%3Ccircle%20cx%3D%2218.5%22%20cy%3D%227.9%22%20r%3D%220.9%22%20fill%3D%22%23B20E19%22%2F%3E%3Ccircle%20cx%3D%221.8%22%20cy%3D%225.0%22%20r%3D%221.3%22%20fill%3D%22%23B20E19%22%2F%3E%3Ccircle%20cx%3D%2214.4%22%20cy%3D%228.9%22%20r%3D%221.1%22%20fill%3D%22%23FFFFFF%22%2F%3E%3Ccircle%20cx%3D%2220.0%22%20cy%3D%223.3%22%20r%3D%221.0%22%20fill%3D%22%232E8B99%22%2F%3E%3Ccircle%20cx%3D%227.5%22%20cy%3D%225.5%22%20r%3D%221.3%22%20fill%3D%22%232E8B99%22%2F%3E%3Ccircle%20cx%3D%223.8%22%20cy%3D%2215.1%22%20r%3D%221.2%22%20fill%3D%22%23FFFFFF%22%2F%3E%3Ccircle%20cx%3D%2221.2%22%20cy%3D%2214.5%22%20r%3D%221.1%22%20fill%3D%22%23B20E19%22%2F%3E%3Ccircle%20cx%3D%222.6%22%20cy%3D%2212.3%22%20r%3D%220.9%22%20fill%3D%22%23FFFFFF%22%2F%3E%3Ccircle%20cx%3D%226.2%22%20cy%3D%2219.8%22%20r%3D%221.3%22%20fill%3D%22%23C97B92%22%2F%3E%3Ccircle%20cx%3D%2212.5%22%20cy%3D%2222.3%22%20r%3D%221.7%22%20fill%3D%22%232E8B99%22%2F%3E%3Ccircle%20cx%3D%225.5%22%20cy%3D%2213.4%22%20r%3D%221.5%22%20fill%3D%22%23B20E19%22%2F%3E%3Ccircle%20cx%3D%226.7%22%20cy%3D%2222.0%22%20r%3D%220.8%22%20fill%3D%22%23B20E19%22%2F%3E%3Ccircle%20cx%3D%221.7%22%20cy%3D%229.9%22%20r%3D%220.9%22%20fill%3D%22%23B20E19%22%2F%3E%3Ccircle%20cx%3D%224.2%22%20cy%3D%228.9%22%20r%3D%221.2%22%20fill%3D%22%232E8B99%22%2F%3E%3Ccircle%20cx%3D%222.2%22%20cy%3D%223.3%22%20r%3D%221.1%22%20fill%3D%22%23C97B92%22%2F%3E%3Ccircle%20cx%3D%2215.8%22%20cy%3D%2216.6%22%20r%3D%221.2%22%20fill%3D%22%232E8B99%22%2F%3E%3Ccircle%20cx%3D%2214.2%22%20cy%3D%2222.2%22%20r%3D%221.1%22%20fill%3D%22%23C97B92%22%2F%3E%3Ccircle%20cx%3D%2216.8%22%20cy%3D%2223.1%22%20r%3D%220.6%22%20fill%3D%22%23B20E19%22%2F%3E%3Ccircle%20cx%3D%2215.3%22%20cy%3D%220.9%22%20r%3D%220.9%22%20fill%3D%22%23B20E19%22%2F%3E%3Ccircle%20cx%3D%225.5%22%20cy%3D%2217.5%22%20r%3D%221.3%22%20fill%3D%22%23B20E19%22%2F%3E%3Ccircle%20cx%3D%2221.2%22%20cy%3D%222.3%22%20r%3D%221.0%22%20fill%3D%22%23B20E19%22%2F%3E%3Ccircle%20cx%3D%2212.1%22%20cy%3D%220.9%22%20r%3D%220.8%22%20fill%3D%22%23B20E19%22%2F%3E%3Ccircle%20cx%3D%2215.5%22%20cy%3D%2213.1%22%20r%3D%220.8%22%20fill%3D%22%23B20E19%22%2F%3E%3Ccircle%20cx%3D%220.5%22%20cy%3D%2219.2%22%20r%3D%221.3%22%20fill%3D%22%23B20E19%22%2F%3E%3Ccircle%20cx%3D%228.3%22%20cy%3D%223.9%22%20r%3D%221.6%22%20fill%3D%22%23B20E19%22%2F%3E%3Ccircle%20cx%3D%228.2%22%20cy%3D%222.5%22%20r%3D%220.7%22%20fill%3D%22%23B20E19%22%2F%3E%3Ccircle%20cx%3D%2220.1%22%20cy%3D%2214.4%22%20r%3D%221.4%22%20fill%3D%22%23B20E19%22%2F%3E%3Ccircle%20cx%3D%2217.4%22%20cy%3D%2212.8%22%20r%3D%221.6%22%20fill%3D%22%23B20E19%22%2F%3E%3Ccircle%20cx%3D%229.2%22%20cy%3D%2213.2%22%20r%3D%221.4%22%20fill%3D%22%23B20E19%22%2F%3E%3Ccircle%20cx%3D%2213.8%22%20cy%3D%2216.8%22%20r%3D%220.6%22%20fill%3D%22%23B20E19%22%2F%3E%3Ccircle%20cx%3D%225.6%22%20cy%3D%227.1%22%20r%3D%220.7%22%20fill%3D%22%23B20E19%22%2F%3E%3Ccircle%20cx%3D%226.8%22%20cy%3D%2215.2%22%20r%3D%221.0%22%20fill%3D%22%23B20E19%22%2F%3E%3Ccircle%20cx%3D%2215.5%22%20cy%3D%222.0%22%20r%3D%221.1%22%20fill%3D%22%232E8B99%22%2F%3E%3Ccircle%20cx%3D%2210.4%22%20cy%3D%221.9%22%20r%3D%220.7%22%20fill%3D%22%232E8B99%22%2F%3E%3Ccircle%20cx%3D%223.2%22%20cy%3D%225.5%22%20r%3D%221.2%22%20fill%3D%22%232E8B99%22%2F%3E%3Ccircle%20cx%3D%2222.5%22%20cy%3D%2213.8%22%20r%3D%221.0%22%20fill%3D%22%232E8B99%22%2F%3E%3Ccircle%20cx%3D%2223.1%22%20cy%3D%221.4%22%20r%3D%221.5%22%20fill%3D%22%232E8B99%22%2F%3E%3Ccircle%20cx%3D%227.1%22%20cy%3D%223.7%22%20r%3D%220.7%22%20fill%3D%22%232E8B99%22%2F%3E%3Ccircle%20cx%3D%227.5%22%20cy%3D%2219.4%22%20r%3D%220.8%22%20fill%3D%22%232E8B99%22%2F%3E%3Ccircle%20cx%3D%2213.9%22%20cy%3D%2215.3%22%20r%3D%221.0%22%20fill%3D%22%232E8B99%22%2F%3E%3Ccircle%20cx%3D%2213.1%22%20cy%3D%221.8%22%20r%3D%220.7%22%20fill%3D%22%232E8B99%22%2F%3E%3Ccircle%20cx%3D%225.1%22%20cy%3D%2216.2%22%20r%3D%221.0%22%20fill%3D%22%232E8B99%22%2F%3E%3Ccircle%20cx%3D%229.8%22%20cy%3D%225.0%22%20r%3D%220.8%22%20fill%3D%22%23B20E19%22%2F%3E%3Ccircle%20cx%3D%226.2%22%20cy%3D%229.3%22%20r%3D%221.3%22%20fill%3D%22%23B20E19%22%2F%3E%3Ccircle%20cx%3D%2211.7%22%20cy%3D%2210.2%22%20r%3D%221.2%22%20fill%3D%22%23B20E19%22%2F%3E%3Ccircle%20cx%3D%229.1%22%20cy%3D%229.4%22%20r%3D%221.3%22%20fill%3D%22%23B20E19%22%2F%3E%3Ccircle%20cx%3D%2220.2%22%20cy%3D%228.2%22%20r%3D%221.5%22%20fill%3D%22%23B20E19%22%2F%3E%3Ccircle%20cx%3D%2212.7%22%20cy%3D%2218.4%22%20r%3D%221.1%22%20fill%3D%22%23B20E19%22%2F%3E%3Ccircle%20cx%3D%229.7%22%20cy%3D%226.6%22%20r%3D%220.6%22%20fill%3D%22%23B20E19%22%2F%3E%3Ccircle%20cx%3D%225.1%22%20cy%3D%2223.5%22%20r%3D%221.1%22%20fill%3D%22%23B20E19%22%2F%3E%3Ccircle%20cx%3D%2214.5%22%20cy%3D%2223.2%22%20r%3D%221.0%22%20fill%3D%22%23B20E19%22%2F%3E%3Ccircle%20cx%3D%224.1%22%20cy%3D%2218.8%22%20r%3D%221.2%22%20fill%3D%22%23B20E19%22%2F%3E%3Ccircle%20cx%3D%2223.3%22%20cy%3D%2222.4%22%20r%3D%221.3%22%20fill%3D%22%23B20E19%22%2F%3E%3Ccircle%20cx%3D%221.2%22%20cy%3D%220.8%22%20r%3D%221.1%22%20fill%3D%22%23B20E19%22%2F%3E%3Ccircle%20cx%3D%221.5%22%20cy%3D%222.3%22%20r%3D%221.1%22%20fill%3D%22%23C97B92%22%2F%3E%3Ccircle%20cx%3D%222.8%22%20cy%3D%2221.4%22%20r%3D%220.7%22%20fill%3D%22%23C97B92%22%2F%3E%3Ccircle%20cx%3D%2212.8%22%20cy%3D%228.1%22%20r%3D%221.6%22%20fill%3D%22%23C97B92%22%2F%3E%3Ccircle%20cx%3D%222.4%22%20cy%3D%2214.3%22%20r%3D%220.8%22%20fill%3D%22%23C97B92%22%2F%3E%3Ccircle%20cx%3D%227.7%22%20cy%3D%2210.8%22%20r%3D%221.6%22%20fill%3D%22%23C97B92%22%2F%3E%3Ccircle%20cx%3D%2218.8%22%20cy%3D%220.8%22%20r%3D%221.6%22%20fill%3D%22%23C97B92%22%2F%3E%3Ccircle%20cx%3D%2213.7%22%20cy%3D%226.5%22%20r%3D%221.5%22%20fill%3D%22%23C97B92%22%2F%3E%3Ccircle%20cx%3D%2219.1%22%20cy%3D%225.1%22%20r%3D%221.3%22%20fill%3D%22%23C97B92%22%2F%3E%3Ccircle%20cx%3D%227.7%22%20cy%3D%229.6%22%20r%3D%221.5%22%20fill%3D%22%23C97B92%22%2F%3E%3Ccircle%20cx%3D%2212.3%22%20cy%3D%2216.3%22%20r%3D%221.3%22%20fill%3D%22%23C97B92%22%2F%3E%3C%2Fsvg%3E");
+    background-size: 16px 16px;
+    background-repeat: repeat;
+    -webkit-mask-image: url("assets/img/logo.png");
+    mask-image: url("assets/img/logo.png");
+    -webkit-mask-size: contain;
+    mask-size: contain;
+    -webkit-mask-repeat: no-repeat;
+    mask-repeat: no-repeat;
+    -webkit-mask-position: center;
+    mask-position: center;
   }
   .menu-mascot:hover{
     animation: fish-wiggle 0.6s ease-in-out infinite;
@@ -507,7 +532,7 @@ body::after{
     margin-top: 2px;
   }
   @media (max-width: 640px){
-    .menu-blob-content{ grid-template-columns: 1fr; padding: 48px 22px 60px; }
+    .menu-blob-content{ grid-template-columns: 1fr; padding: 48px 22px 90px; }
     .page-title{ font-size: 2.8rem; }
   }
   .social-links{
@@ -517,11 +542,11 @@ body::after{
   }
   .social-link{
     display:flex;
-    color: var(--rose);
+    color: var(--ink);
     transition: color 0.15s ease, transform 0.15s ease;
   }
   .social-link:hover{
-    color: var(--coral);
+    color: var(--rose);
     transform: translateY(-1px);
   }
 .social-icon{
@@ -529,7 +554,6 @@ body::after{
   height: 38px;
   display: block;
 }
-
 
   /* ---------- SOCIAL FOOTER ---------- */
   .site-footer{
@@ -568,6 +592,9 @@ body::after{
     display: block;
     transform: rotate(3deg);
     background-color: var(--coral);
+    background-image: url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2224%22%20height%3D%2224%22%20viewBox%3D%220%200%2024%2024%22%3E%3Ccircle%20cx%3D%2210.9%22%20cy%3D%2213.4%22%20r%3D%221.6%22%20fill%3D%22%23FFFFFF%22%2F%3E%3Ccircle%20cx%3D%2210.8%22%20cy%3D%2220.5%22%20r%3D%220.8%22%20fill%3D%22%23FFFFFF%22%2F%3E%3Ccircle%20cx%3D%2215.1%22%20cy%3D%2219.0%22%20r%3D%220.7%22%20fill%3D%22%23C97B92%22%2F%3E%3Ccircle%20cx%3D%223.4%22%20cy%3D%2212.9%22%20r%3D%221.6%22%20fill%3D%22%23B20E19%22%2F%3E%3Ccircle%20cx%3D%2214.3%22%20cy%3D%229.5%22%20r%3D%221.1%22%20fill%3D%22%232E8B99%22%2F%3E%3Ccircle%20cx%3D%2215.0%22%20cy%3D%2220.0%22%20r%3D%220.7%22%20fill%3D%22%23B20E19%22%2F%3E%3Ccircle%20cx%3D%224.6%22%20cy%3D%225.8%22%20r%3D%220.6%22%20fill%3D%22%23FFFFFF%22%2F%3E%3Ccircle%20cx%3D%227.8%22%20cy%3D%2214.2%22%20r%3D%220.8%22%20fill%3D%22%232E8B99%22%2F%3E%3Ccircle%20cx%3D%2215.4%22%20cy%3D%2212.0%22%20r%3D%221.3%22%20fill%3D%22%23FFFFFF%22%2F%3E%3Ccircle%20cx%3D%2215.7%22%20cy%3D%229.8%22%20r%3D%221.2%22%20fill%3D%22%23B20E19%22%2F%3E%3Ccircle%20cx%3D%2217.0%22%20cy%3D%227.6%22%20r%3D%220.9%22%20fill%3D%22%23C97B92%22%2F%3E%3Ccircle%20cx%3D%220.7%22%20cy%3D%2213.5%22%20r%3D%220.7%22%20fill%3D%22%23B20E19%22%2F%3E%3Ccircle%20cx%3D%2220.3%22%20cy%3D%229.3%22%20r%3D%221.7%22%20fill%3D%22%23B20E19%22%2F%3E%3Ccircle%20cx%3D%225.1%22%20cy%3D%2222.2%22%20r%3D%220.7%22%20fill%3D%22%23FFFFFF%22%2F%3E%3Ccircle%20cx%3D%2223.5%22%20cy%3D%229.5%22%20r%3D%220.7%22%20fill%3D%22%232E8B99%22%2F%3E%3Ccircle%20cx%3D%2218.7%22%20cy%3D%226.5%22%20r%3D%220.7%22%20fill%3D%22%23C97B92%22%2F%3E%3Ccircle%20cx%3D%220.4%22%20cy%3D%229.8%22%20r%3D%221.6%22%20fill%3D%22%232E8B99%22%2F%3E%3Ccircle%20cx%3D%225.9%22%20cy%3D%222.4%22%20r%3D%220.7%22%20fill%3D%22%23FFFFFF%22%2F%3E%3Ccircle%20cx%3D%224.3%22%20cy%3D%2213.4%22%20r%3D%221.1%22%20fill%3D%22%232E8B99%22%2F%3E%3Ccircle%20cx%3D%2223.6%22%20cy%3D%2218.5%22%20r%3D%221.1%22%20fill%3D%22%23FFFFFF%22%2F%3E%3Ccircle%20cx%3D%222.8%22%20cy%3D%2210.1%22%20r%3D%220.8%22%20fill%3D%22%23C97B92%22%2F%3E%3Ccircle%20cx%3D%2220.7%22%20cy%3D%2223.4%22%20r%3D%221.3%22%20fill%3D%22%23B20E19%22%2F%3E%3Ccircle%20cx%3D%225.1%22%20cy%3D%229.5%22%20r%3D%221.5%22%20fill%3D%22%23B20E19%22%2F%3E%3Ccircle%20cx%3D%221.0%22%20cy%3D%223.5%22%20r%3D%221.1%22%20fill%3D%22%23B20E19%22%2F%3E%3Ccircle%20cx%3D%2218.5%22%20cy%3D%227.9%22%20r%3D%220.9%22%20fill%3D%22%23B20E19%22%2F%3E%3Ccircle%20cx%3D%221.8%22%20cy%3D%225.0%22%20r%3D%221.3%22%20fill%3D%22%23B20E19%22%2F%3E%3Ccircle%20cx%3D%2214.4%22%20cy%3D%228.9%22%20r%3D%221.1%22%20fill%3D%22%23FFFFFF%22%2F%3E%3Ccircle%20cx%3D%2220.0%22%20cy%3D%223.3%22%20r%3D%221.0%22%20fill%3D%22%232E8B99%22%2F%3E%3Ccircle%20cx%3D%227.5%22%20cy%3D%225.5%22%20r%3D%221.3%22%20fill%3D%22%232E8B99%22%2F%3E%3Ccircle%20cx%3D%223.8%22%20cy%3D%2215.1%22%20r%3D%221.2%22%20fill%3D%22%23FFFFFF%22%2F%3E%3Ccircle%20cx%3D%2221.2%22%20cy%3D%2214.5%22%20r%3D%221.1%22%20fill%3D%22%23B20E19%22%2F%3E%3Ccircle%20cx%3D%222.6%22%20cy%3D%2212.3%22%20r%3D%220.9%22%20fill%3D%22%23FFFFFF%22%2F%3E%3Ccircle%20cx%3D%226.2%22%20cy%3D%2219.8%22%20r%3D%221.3%22%20fill%3D%22%23C97B92%22%2F%3E%3Ccircle%20cx%3D%2212.5%22%20cy%3D%2222.3%22%20r%3D%221.7%22%20fill%3D%22%232E8B99%22%2F%3E%3Ccircle%20cx%3D%225.5%22%20cy%3D%2213.4%22%20r%3D%221.5%22%20fill%3D%22%23B20E19%22%2F%3E%3Ccircle%20cx%3D%226.7%22%20cy%3D%2222.0%22%20r%3D%220.8%22%20fill%3D%22%23B20E19%22%2F%3E%3Ccircle%20cx%3D%221.7%22%20cy%3D%229.9%22%20r%3D%220.9%22%20fill%3D%22%23B20E19%22%2F%3E%3Ccircle%20cx%3D%224.2%22%20cy%3D%228.9%22%20r%3D%221.2%22%20fill%3D%22%232E8B99%22%2F%3E%3Ccircle%20cx%3D%222.2%22%20cy%3D%223.3%22%20r%3D%221.1%22%20fill%3D%22%23C97B92%22%2F%3E%3Ccircle%20cx%3D%2215.8%22%20cy%3D%2216.6%22%20r%3D%221.2%22%20fill%3D%22%232E8B99%22%2F%3E%3Ccircle%20cx%3D%2214.2%22%20cy%3D%2222.2%22%20r%3D%221.1%22%20fill%3D%22%23C97B92%22%2F%3E%3Ccircle%20cx%3D%2216.8%22%20cy%3D%2223.1%22%20r%3D%220.6%22%20fill%3D%22%23B20E19%22%2F%3E%3Ccircle%20cx%3D%2215.3%22%20cy%3D%220.9%22%20r%3D%220.9%22%20fill%3D%22%23B20E19%22%2F%3E%3Ccircle%20cx%3D%225.5%22%20cy%3D%2217.5%22%20r%3D%221.3%22%20fill%3D%22%23B20E19%22%2F%3E%3Ccircle%20cx%3D%2221.2%22%20cy%3D%222.3%22%20r%3D%221.0%22%20fill%3D%22%23B20E19%22%2F%3E%3Ccircle%20cx%3D%2212.1%22%20cy%3D%220.9%22%20r%3D%220.8%22%20fill%3D%22%23B20E19%22%2F%3E%3Ccircle%20cx%3D%2215.5%22%20cy%3D%2213.1%22%20r%3D%220.8%22%20fill%3D%22%23B20E19%22%2F%3E%3Ccircle%20cx%3D%220.5%22%20cy%3D%2219.2%22%20r%3D%221.3%22%20fill%3D%22%23B20E19%22%2F%3E%3Ccircle%20cx%3D%228.3%22%20cy%3D%223.9%22%20r%3D%221.6%22%20fill%3D%22%23B20E19%22%2F%3E%3Ccircle%20cx%3D%228.2%22%20cy%3D%222.5%22%20r%3D%220.7%22%20fill%3D%22%23B20E19%22%2F%3E%3Ccircle%20cx%3D%2220.1%22%20cy%3D%2214.4%22%20r%3D%221.4%22%20fill%3D%22%23B20E19%22%2F%3E%3Ccircle%20cx%3D%2217.4%22%20cy%3D%2212.8%22%20r%3D%221.6%22%20fill%3D%22%23B20E19%22%2F%3E%3Ccircle%20cx%3D%229.2%22%20cy%3D%2213.2%22%20r%3D%221.4%22%20fill%3D%22%23B20E19%22%2F%3E%3Ccircle%20cx%3D%2213.8%22%20cy%3D%2216.8%22%20r%3D%220.6%22%20fill%3D%22%23B20E19%22%2F%3E%3Ccircle%20cx%3D%225.6%22%20cy%3D%227.1%22%20r%3D%220.7%22%20fill%3D%22%23B20E19%22%2F%3E%3Ccircle%20cx%3D%226.8%22%20cy%3D%2215.2%22%20r%3D%221.0%22%20fill%3D%22%23B20E19%22%2F%3E%3Ccircle%20cx%3D%2215.5%22%20cy%3D%222.0%22%20r%3D%221.1%22%20fill%3D%22%232E8B99%22%2F%3E%3Ccircle%20cx%3D%2210.4%22%20cy%3D%221.9%22%20r%3D%220.7%22%20fill%3D%22%232E8B99%22%2F%3E%3Ccircle%20cx%3D%223.2%22%20cy%3D%225.5%22%20r%3D%221.2%22%20fill%3D%22%232E8B99%22%2F%3E%3Ccircle%20cx%3D%2222.5%22%20cy%3D%2213.8%22%20r%3D%221.0%22%20fill%3D%22%232E8B99%22%2F%3E%3Ccircle%20cx%3D%2223.1%22%20cy%3D%221.4%22%20r%3D%221.5%22%20fill%3D%22%232E8B99%22%2F%3E%3Ccircle%20cx%3D%227.1%22%20cy%3D%223.7%22%20r%3D%220.7%22%20fill%3D%22%232E8B99%22%2F%3E%3Ccircle%20cx%3D%227.5%22%20cy%3D%2219.4%22%20r%3D%220.8%22%20fill%3D%22%232E8B99%22%2F%3E%3Ccircle%20cx%3D%2213.9%22%20cy%3D%2215.3%22%20r%3D%221.0%22%20fill%3D%22%232E8B99%22%2F%3E%3Ccircle%20cx%3D%2213.1%22%20cy%3D%221.8%22%20r%3D%220.7%22%20fill%3D%22%232E8B99%22%2F%3E%3Ccircle%20cx%3D%225.1%22%20cy%3D%2216.2%22%20r%3D%221.0%22%20fill%3D%22%232E8B99%22%2F%3E%3Ccircle%20cx%3D%229.8%22%20cy%3D%225.0%22%20r%3D%220.8%22%20fill%3D%22%23B20E19%22%2F%3E%3Ccircle%20cx%3D%226.2%22%20cy%3D%229.3%22%20r%3D%221.3%22%20fill%3D%22%23B20E19%22%2F%3E%3Ccircle%20cx%3D%2211.7%22%20cy%3D%2210.2%22%20r%3D%221.2%22%20fill%3D%22%23B20E19%22%2F%3E%3Ccircle%20cx%3D%229.1%22%20cy%3D%229.4%22%20r%3D%221.3%22%20fill%3D%22%23B20E19%22%2F%3E%3Ccircle%20cx%3D%2220.2%22%20cy%3D%228.2%22%20r%3D%221.5%22%20fill%3D%22%23B20E19%22%2F%3E%3Ccircle%20cx%3D%2212.7%22%20cy%3D%2218.4%22%20r%3D%221.1%22%20fill%3D%22%23B20E19%22%2F%3E%3Ccircle%20cx%3D%229.7%22%20cy%3D%226.6%22%20r%3D%220.6%22%20fill%3D%22%23B20E19%22%2F%3E%3Ccircle%20cx%3D%225.1%22%20cy%3D%2223.5%22%20r%3D%221.1%22%20fill%3D%22%23B20E19%22%2F%3E%3Ccircle%20cx%3D%2214.5%22%20cy%3D%2223.2%22%20r%3D%221.0%22%20fill%3D%22%23B20E19%22%2F%3E%3Ccircle%20cx%3D%224.1%22%20cy%3D%2218.8%22%20r%3D%221.2%22%20fill%3D%22%23B20E19%22%2F%3E%3Ccircle%20cx%3D%2223.3%22%20cy%3D%2222.4%22%20r%3D%221.3%22%20fill%3D%22%23B20E19%22%2F%3E%3Ccircle%20cx%3D%221.2%22%20cy%3D%220.8%22%20r%3D%221.1%22%20fill%3D%22%23B20E19%22%2F%3E%3Ccircle%20cx%3D%221.5%22%20cy%3D%222.3%22%20r%3D%221.1%22%20fill%3D%22%23C97B92%22%2F%3E%3Ccircle%20cx%3D%222.8%22%20cy%3D%2221.4%22%20r%3D%220.7%22%20fill%3D%22%23C97B92%22%2F%3E%3Ccircle%20cx%3D%2212.8%22%20cy%3D%228.1%22%20r%3D%221.6%22%20fill%3D%22%23C97B92%22%2F%3E%3Ccircle%20cx%3D%222.4%22%20cy%3D%2214.3%22%20r%3D%220.8%22%20fill%3D%22%23C97B92%22%2F%3E%3Ccircle%20cx%3D%227.7%22%20cy%3D%2210.8%22%20r%3D%221.6%22%20fill%3D%22%23C97B92%22%2F%3E%3Ccircle%20cx%3D%2218.8%22%20cy%3D%220.8%22%20r%3D%221.6%22%20fill%3D%22%23C97B92%22%2F%3E%3Ccircle%20cx%3D%2213.7%22%20cy%3D%226.5%22%20r%3D%221.5%22%20fill%3D%22%23C97B92%22%2F%3E%3Ccircle%20cx%3D%2219.1%22%20cy%3D%225.1%22%20r%3D%221.3%22%20fill%3D%22%23C97B92%22%2F%3E%3Ccircle%20cx%3D%227.7%22%20cy%3D%229.6%22%20r%3D%221.5%22%20fill%3D%22%23C97B92%22%2F%3E%3Ccircle%20cx%3D%2212.3%22%20cy%3D%2216.3%22%20r%3D%221.3%22%20fill%3D%22%23C97B92%22%2F%3E%3C%2Fsvg%3E");
+    background-size: 18px 18px;
+    background-repeat: repeat;
     -webkit-mask-image: url(assets/img/wave-stamp-coral.png);
     mask-image: url(assets/img/wave-stamp-coral.png);
     -webkit-mask-size: contain;
@@ -576,10 +603,10 @@ body::after{
     mask-repeat: no-repeat;
     -webkit-mask-position: center;
     mask-position: center;
-    transition: background-color 0.2s ease;
+    transition: filter 0.2s ease;
   }
   .wave-stamp-link:hover .wave-stamp{
-    background-color: var(--rose);
+    filter: saturate(1.35) brightness(1.06);
   }
 
   @media (max-width: 640px){
@@ -610,7 +637,7 @@ body::after{
 <header class="site-nav">
   <nav class="wrap">
     <a href="index.html" class="logo">
-      <img class="mark" src="assets/img/logo.png" alt="" aria-hidden="true">
+      <div class="mark" aria-hidden="true"></div>
       <span><span class="brand-caps nav-word-main">REDFISH</span> <span class="brand-caps nav-word-sub">Coffee</span></span>
 
     </a>
@@ -690,7 +717,8 @@ body::after{
     </div>
 
     <div class="menu-card-footer">
-      <img class="menu-mascot" src="assets/img/logo.png" alt="" aria-hidden="true">
+      <div class="menu-mascot" aria-hidden="true"></div>
+      <a class="footer-handle" href="https://instagram.com/redfishcoffee" target="_blank" rel="noopener">@redfishcoffee</a>
     </div>
   </div>
 </main>
