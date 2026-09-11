@@ -10,7 +10,7 @@
 <meta property="og:description" content="The Redfish Coffee menu — drip coffee, espresso, matcha, and refreshers, served hot or iced.">
 <meta property="og:image" content="assets/img/favicon.png">
 <meta property="og:type" content="website">
-<meta name="theme-color" content="#E2D9BC">
+<meta name="theme-color" content="#FAF6E2">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=IM+Fell+English:ital@0;1&family=Courier+Prime:wght@400;700&family=Chewy&family=Bagel+Fat+One&display=swap" rel="stylesheet">
@@ -30,7 +30,7 @@
     font-display: swap;
   }
 :root{
-  --sand: #E2D9BC;
+  --sand: #FAF6E2;
   --foam: #F7E6CB;
   --coral: #B20E19;
   --ink: #683629;
@@ -53,12 +53,7 @@ html{
 
 body{
   min-height: 100vh;
-  background:
-    linear-gradient(rgba(226,217,188,0.32), rgba(226,217,188,0.32)),
-    url("assets/img/menu-bg.jpg");
-  background-size: cover;
-  background-position: center;
-  background-attachment: fixed;
+  background: var(--sand);
   color:var(--ink);
   font-family:'Mesa Lane', 'Allora', 'Bagel Fat One', cursive;
   font-size:15px;
@@ -361,7 +356,18 @@ body::after{
     max-width: 620px;
     width: 100%;
     padding: 12px 28px 40px;
-    transform: rotate(0deg);
+    overflow: hidden;
+    box-shadow: 5px 6px 0 rgba(104,54,41,0.22);
+  }
+  .menu-card::before{
+    content: "";
+    position: absolute;
+    inset: -3px;
+    z-index: 0;
+    background: url("assets/img/menu-bg-cropped.jpg");
+    background-size: cover;
+    background-position: center 55%;
+    filter: sepia(0.18) saturate(0.65) contrast(1.05) brightness(0.92);
   }
   .menu-card > *{
     position: relative;
