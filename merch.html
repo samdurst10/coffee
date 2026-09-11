@@ -38,8 +38,10 @@
     --line: rgba(104,54,41,0.28);
     --line-soft: rgba(104,54,41,0.14);
     --accent-blue: #25799B;
-  --sky-blue: #4FB6E0;
-  --sky-blue-text: #166382;
+  --sky-blue: #2E8B99;
+  --sky-blue-text: #145A62;
+  --rose: #C97B92;
+  --rose-text: #8A4A5B;
   }
 
   *{ margin:0; padding:0; box-sizing:border-box; }
@@ -96,6 +98,10 @@
 
   header.site-nav{
     padding: 24px 0;
+    background: transparent;
+    position: sticky;
+    top: 0;
+    z-index: 40;
   }
   nav.wrap{
     display:flex;
@@ -115,13 +121,13 @@
     display:inline-block;
     font-family: 'Mesa Lane', 'Allora', 'Bagel Fat One', cursive;
     font-size: 0.85rem;
-    color: var(--sky-blue-text);
+    color: var(--sky-blue);
     padding: 4px 2px;
     background: transparent;
     transition: color 0.15s ease, transform 0.15s ease;
   }
   .nav-btn:hover{
-    color: var(--ink);
+    color: var(--rose);
     transform: translateY(-1px);
   }
   .nav-btn.active{
@@ -139,7 +145,7 @@
     content: "";
     position: absolute;
     z-index: -1;
-    background: rgba(37, 121, 155, 0.42);
+    background: rgba(46, 139, 153, 0.42);
     filter: url(#rough);
   }
   .hl-navbtn{ display: inline-block; }
@@ -149,12 +155,7 @@
     background: rgba(255,255,255,0.85);
     transition: background 0.15s ease;
   }
-  .nav-btn.hl-navbtn:hover::before,
-  .nav-btn.hl-navbtn:focus-visible::before,
-  .nav-btn.hl-navbtn:active::before,
-  .nav-btn.hl-navbtn.active::before{
-    background: rgba(79, 182, 224, 0.5);
-  }
+
   .nav-right{
     display:flex;
     align-items:center;
@@ -169,13 +170,17 @@
   font-family: 'Mesa Lane', 'Bagel Fat One', cursive;
   text-transform: lowercase;
   letter-spacing: 0.03em;
-  color: var(--sand);
+  color: #fff;
   -webkit-text-stroke: 2px var(--coral);
   text-shadow:
     -1.2px -1.2px 0 var(--coral),
      1.2px -1.2px 0 var(--coral),
     -1.2px  1.2px 0 var(--coral),
-     1.2px  1.2px 0 var(--coral);
+     1.2px  1.2px 0 var(--coral),
+    -2.6px -2.6px 0 var(--rose),
+     2.6px -2.6px 0 var(--rose),
+    -2.6px  2.6px 0 var(--rose),
+     2.6px  2.6px 0 var(--rose);
 }
 
   .logo{
@@ -185,7 +190,7 @@
     font-family: 'Mesa Lane', 'Bagel Fat One', cursive;
     font-size: 1.3rem;
     text-transform: lowercase;
-    color: var(--sand);
+    color: #fff;
     -webkit-text-stroke: 1px var(--coral);
     text-shadow:
       -1px -1px 0 var(--coral), 1px -1px 0 var(--coral),
@@ -202,6 +207,11 @@
     flex-shrink: 0;
     color: var(--coral);
     transition: transform 0.25s ease;
+    filter:
+      drop-shadow(1.4px 0 0 var(--rose))
+      drop-shadow(-1.4px 0 0 var(--rose))
+      drop-shadow(0 1.4px 0 var(--rose))
+      drop-shadow(0 -1.4px 0 var(--rose));
   }
   .logo:hover .mark{
     transform: rotate(6deg);
@@ -254,10 +264,16 @@
     text-transform: lowercase;
     color: var(--ink);
     cursor: pointer;
-    transition: color 0.15s ease, transform 0.15s ease;
+    transition: color 0.18s ease, transform 0.15s ease, text-shadow 0.18s ease, -webkit-text-stroke 0.18s ease;
   }
   .quick-btn:hover{
-    color: var(--coral);
+    color: #fff;
+    -webkit-text-stroke: 1px var(--sky-blue);
+    text-shadow:
+      -1px -1px 0 var(--sky-blue),
+       1px -1px 0 var(--sky-blue),
+      -1px  1px 0 var(--sky-blue),
+       1px  1px 0 var(--sky-blue);
     transform: translateY(-1px);
   }
 
@@ -324,7 +340,7 @@
   }
 
   :focus-visible{
-    outline: 2px solid var(--accent-blue);
+    outline: 2px solid var(--sky-blue);
     outline-offset: 2px;
   }  /* ---------- MENU PAGE ---------- */
   .menu-page{
@@ -393,21 +409,36 @@
     margin-top: 32px;
   }
   .merch-placeholder-card{
+    position: relative;
     aspect-ratio: 1;
     display: flex;
     align-items: center;
     justify-content: center;
-    border: 2px dashed var(--sky-blue-text);
-    border-radius: 12px;
-    background: rgba(104,54,41,0.05);
+    border: none;
+    border-radius: 16px;
+    background: #fff;
+    box-shadow: 0 1px 3px rgba(104,54,41,0.08), 0 1px 2px rgba(104,54,41,0.04);
+    transition: transform 0.18s ease, background 0.18s ease, box-shadow 0.18s ease;
+  }
+  .merch-placeholder-card:hover{
+    transform: translateY(-3px);
+    background: #fff;
+    box-shadow: 0 0 0 1.5px var(--sky-blue), 0 10px 22px rgba(104,54,41,0.12);
+  }
+  .merch-placeholder-card:nth-child(2):hover{
+    box-shadow: 0 0 0 1.5px var(--rose), 0 10px 22px rgba(104,54,41,0.12);
   }
   .merch-placeholder-label{
-    font-family: 'Mesa Lane', 'Allora', 'Bagel Fat One', cursive;
-    text-transform: lowercase;
-    font-size: 0.9rem;
+    display: inline-block;
+    font-family: 'Courier Prime', monospace;
+    font-size: 0.7rem;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
     color: var(--ink-soft);
-    text-align: center;
-    padding: 0 8px;
+    background: transparent;
+    border: none;
+    border-radius: 999px;
+    padding: 0;
   }
   @media (max-width: 640px){
     .merch-placeholder-grid{ grid-template-columns: repeat(2, 1fr); }
@@ -440,14 +471,14 @@
     font-family: 'Courier Prime', monospace;
     font-size: 16px;
     padding: 12px 18px;
-    border: 2px solid var(--sky-blue-text);
+    border: 2px solid var(--sky-blue);
     border-radius: 999px;
     background: var(--foam);
     color: var(--ink);
     min-width: 220px;
   }
   .alerts-input:focus{
-    outline: 2px solid var(--sky-blue-text);
+    outline: 2px solid var(--sky-blue);
     outline-offset: 2px;
   }
   .social-links{
@@ -457,11 +488,11 @@
   }
   .social-link{
     display:flex;
-    color: var(--ink);
+    color: var(--rose);
     transition: color 0.15s ease, transform 0.15s ease;
   }
   .social-link:hover{
-    color: var(--sky-blue-text);
+    color: var(--coral);
     transform: translateY(-1px);
   }
 .social-icon{
@@ -473,22 +504,66 @@
 
   /* ---------- SOCIAL FOOTER ---------- */
   .site-footer{
+    position: relative;
     padding: 28px 0 40px;
     text-align: center;
   }
-  .wave-stamp{
-    width: 70px;
-    height: auto;
-    margin: 18px auto 0;
-    display: block;
+  .site-footer::before{
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    background:
+      linear-gradient(rgba(226,217,188,0.94), rgba(226,217,188,0.94)),
+      url("assets/img/menu-bg.jpg");
+    background-size: cover;
+    background-position: center 65%;
+    filter: saturate(0.55);
   }
+
   .site-footer .social-links{
     justify-content: center;
+  }
+  .wave-stamp-link{
+    display: block;
+    width: 100px;
+    margin: 26px auto 0;
+    transition: transform 0.2s ease;
+  }
+  .wave-stamp-link:hover{
+    transform: scale(1.06) rotate(-4deg);
+  }
+  .wave-stamp{
+    width: 100%;
+    aspect-ratio: 176 / 152;
+    display: block;
+    transform: rotate(3deg);
+    background-color: var(--coral);
+    -webkit-mask-image: url(assets/img/wave-stamp-coral.png);
+    mask-image: url(assets/img/wave-stamp-coral.png);
+    -webkit-mask-size: contain;
+    mask-size: contain;
+    -webkit-mask-repeat: no-repeat;
+    mask-repeat: no-repeat;
+    -webkit-mask-position: center;
+    mask-position: center;
+    transition: background-color 0.2s ease;
+  }
+  .wave-stamp-link:hover .wave-stamp{
+    background-color: var(--rose);
   }
 
   @media (max-width: 640px){
     nav.wrap{ flex-direction: column; align-items: center; text-align: center; }
     .logo{ margin-right: 0; justify-content: center; }
+  }
+  @media (prefers-reduced-motion: reduce){
+    *, *::before, *::after{
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
   }
 </style>
 </head>
@@ -552,7 +627,9 @@
       <svg class="social-icon" viewBox="0 0 32 32" aria-hidden="true" fill="currentColor"><path d="M16.656 1.029c1.637-0.025 3.262-0.012 4.886-0.025 0.054 2.031 0.878 3.859 2.189 5.213l-0.002-0.002c1.411 1.271 3.247 2.095 5.271 2.235l0.028 0.002v5.036c-1.912-0.048-3.71-0.489-5.331-1.247l0.082 0.034c-0.784-0.377-1.447-0.764-2.077-1.196l0.052 0.034c-0.012 3.649 0.012 7.298-0.025 10.934-0.103 1.853-0.719 3.543-1.707 4.954l0.020-0.031c-1.652 2.366-4.328 3.919-7.371 4.011l-0.014 0c-0.123 0.006-0.268 0.009-0.414 0.009-1.73 0-3.347-0.482-4.725-1.319l0.040 0.023c-2.508-1.509-4.238-4.091-4.558-7.094l-0.004-0.041c-0.025-0.625-0.037-1.25-0.012-1.862 0.49-4.779 4.494-8.476 9.361-8.476 0.547 0 1.083 0.047 1.604 0.136l-0.056-0.008c0.025 1.849-0.050 3.699-0.050 5.548-0.423-0.153-0.911-0.242-1.42-0.242-1.868 0-3.457 1.194-4.045 2.861l-0.009 0.030c-0.133 0.427-0.21 0.918-0.21 1.426 0 0.206 0.013 0.41 0.037 0.61l-0.002-0.024c0.332 2.046 2.086 3.59 4.201 3.59 0.061 0 0.121-0.001 0.181-0.004l-0.009 0c1.463-0.044 2.733-0.831 3.451-1.994l0.010-0.018c0.267-0.372 0.45-0.822 0.511-1.311l0.001-0.014c0.125-2.237 0.075-4.461 0.087-6.698 0.012-5.036-0.012-10.060 0.025-15.083z"/></svg>
     </a>
   </div>
-  <img class="wave-stamp" src="assets/img/wave-stamp.png" alt="" aria-hidden="true">
+  <a class="wave-stamp-link" href="index.html" aria-label="Redfish Coffee — home">
+    <div class="wave-stamp" role="img" aria-label=""></div>
+  </a>
 </footer>
 </body>
 </html>

@@ -38,8 +38,10 @@
     --line: rgba(104,54,41,0.28);
     --line-soft: rgba(104,54,41,0.14);
     --accent-blue: #25799B;
-  --sky-blue: #4FB6E0;
-  --sky-blue-text: #166382;
+  --sky-blue: #2E8B99;
+  --sky-blue-text: #145A62;
+  --rose: #C97B92;
+  --rose-text: #8A4A5B;
   }
 
   *{ margin:0; padding:0; box-sizing:border-box; }
@@ -97,7 +99,10 @@
 
   header.site-nav{
     padding: 24px 0;
-    background: var(--sand);
+    background: transparent;
+    position: sticky;
+    top: 0;
+    z-index: 40;
   }
   nav.wrap{
     display:flex;
@@ -117,13 +122,13 @@
     display:inline-block;
     font-family: 'Mesa Lane', 'Allora', 'Bagel Fat One', cursive;
     font-size: 0.85rem;
-    color: var(--sky-blue-text);
+    color: var(--sky-blue);
     padding: 4px 2px;
     background: transparent;
     transition: color 0.15s ease, transform 0.15s ease;
   }
   .nav-btn:hover{
-    color: var(--ink);
+    color: var(--rose);
     transform: translateY(-1px);
   }
   .nav-btn.active{
@@ -141,7 +146,7 @@
     content: "";
     position: absolute;
     z-index: -1;
-    background: rgba(37, 121, 155, 0.42);
+    background: rgba(46, 139, 153, 0.42);
     filter: url(#rough);
   }
   .hl-navbtn{ display: inline-block; }
@@ -151,12 +156,7 @@
     background: rgba(255,255,255,0.85);
     transition: background 0.15s ease;
   }
-  .nav-btn.hl-navbtn:hover::before,
-  .nav-btn.hl-navbtn:focus-visible::before,
-  .nav-btn.hl-navbtn:active::before,
-  .nav-btn.hl-navbtn.active::before{
-    background: rgba(79, 182, 224, 0.5);
-  }
+
   .nav-right{
     display:flex;
     align-items:center;
@@ -171,13 +171,17 @@
   font-family: 'Mesa Lane', 'Bagel Fat One', cursive;
   text-transform: lowercase;
   letter-spacing: 0.03em;
-  color: var(--sand);
+  color: #fff;
   -webkit-text-stroke: 2px var(--coral);
   text-shadow:
     -1.2px -1.2px 0 var(--coral),
      1.2px -1.2px 0 var(--coral),
     -1.2px  1.2px 0 var(--coral),
-     1.2px  1.2px 0 var(--coral);
+     1.2px  1.2px 0 var(--coral),
+    -2.6px -2.6px 0 var(--rose),
+     2.6px -2.6px 0 var(--rose),
+    -2.6px  2.6px 0 var(--rose),
+     2.6px  2.6px 0 var(--rose);
 }
 
   .logo{
@@ -187,7 +191,7 @@
     font-family: 'Mesa Lane', 'Bagel Fat One', cursive;
     font-size: 1.3rem;
     text-transform: lowercase;
-    color: var(--sand);
+    color: #fff;
     -webkit-text-stroke: 1px var(--coral);
     text-shadow:
       -1px -1px 0 var(--coral), 1px -1px 0 var(--coral),
@@ -204,6 +208,11 @@
     flex-shrink: 0;
     color: var(--coral);
     transition: transform 0.25s ease;
+    filter:
+      drop-shadow(1.4px 0 0 var(--rose))
+      drop-shadow(-1.4px 0 0 var(--rose))
+      drop-shadow(0 1.4px 0 var(--rose))
+      drop-shadow(0 -1.4px 0 var(--rose));
   }
   .logo:hover .mark{
     transform: rotate(6deg);
@@ -256,10 +265,16 @@
     text-transform: lowercase;
     color: var(--ink);
     cursor: pointer;
-    transition: color 0.15s ease, transform 0.15s ease;
+    transition: color 0.18s ease, transform 0.15s ease, text-shadow 0.18s ease, -webkit-text-stroke 0.18s ease;
   }
   .quick-btn:hover{
-    color: var(--coral);
+    color: #fff;
+    -webkit-text-stroke: 1px var(--sky-blue);
+    text-shadow:
+      -1px -1px 0 var(--sky-blue),
+       1px -1px 0 var(--sky-blue),
+      -1px  1px 0 var(--sky-blue),
+       1px  1px 0 var(--sky-blue);
     transform: translateY(-1px);
   }
 
@@ -326,7 +341,7 @@
   }
 
   :focus-visible{
-    outline: 2px solid var(--accent-blue);
+    outline: 2px solid var(--sky-blue);
     outline-offset: 2px;
   }  /* ---------- MENU PAGE ---------- */
   .menu-page{
@@ -412,14 +427,14 @@
     margin: 0 0 18px;
   }
   .menu-row:not(.is-today):hover{
-    color: var(--sky-blue-text);
+    color: var(--sky-blue);
   }
   .menu-row:not(.is-today):hover .leader{
-    border-bottom-color: var(--sky-blue-text);
+    border-bottom-color: var(--sky-blue);
     opacity: 1;
   }
   .menu-row:not(.is-today):hover .price{
-    color: var(--sky-blue-text);
+    color: var(--sky-blue);
   }
   .menu-divider{
     display: block;
@@ -440,82 +455,60 @@
     line-height: 1.6;
   }
 
-  /* ---------- TODAY CARD ---------- */
-  .today-card{
-    position: relative;
-    background: var(--foam);
-    border: 3px solid var(--coral);
-    border-radius: 26px;
-    padding: 34px 26px 28px;
-    margin: 0 0 40px;
-    text-align: center;
-    overflow: hidden;
-  }
-  .today-card::before{
-    content: "";
-    position: absolute;
-    inset: 8px;
-    border: 2px dashed var(--line);
-    border-radius: 18px;
-    pointer-events: none;
-  }
-  .today-tag{
-    display: inline-block;
-    font-family: 'Mesa Lane', 'Bagel Fat One', cursive;
-    font-size: 0.95rem;
-    text-transform: lowercase;
-    background: var(--coral);
-    color: var(--foam);
-    padding: 6px 18px;
-    border-radius: 999px;
-    transform: rotate(-3deg);
-    margin-bottom: 14px;
-  }
-  .today-tag.is-off{
-    background: var(--ink-soft);
-  }
-  .today-loc{
-    font-family: 'Mesa Lane', 'Allora', 'Bagel Fat One', cursive;
-    text-transform: lowercase;
-    color: var(--coral);
-    font-size: 2.4rem;
-    line-height: 1.05;
-    margin: 0 0 6px;
-  }
-  .today-meta{
-    font-family: 'Courier Prime', monospace;
-    color: var(--ink-soft);
-    font-size: 1rem;
-    margin: 0 0 4px;
-  }
-  .today-sub{
-    font-family: 'Courier Prime', monospace;
-    color: var(--ink-soft);
-    font-size: 0.82rem;
-    opacity: 0.85;
-    margin: 0 0 22px;
-  }
-  .today-art{
-    width: 150px;
-    height: auto;
-    margin: 4px auto 20px;
-    display: block;
-  }
-  .today-actions{
+  /* ---------- TODAY CALLOUT ---------- */
+  .today-callout{
     display: flex;
-    gap: 20px;
+    align-items: center;
     justify-content: center;
+    gap: 10px;
     flex-wrap: wrap;
-    align-items: baseline;
+    font-family: 'Mesa Lane', 'Bagel Fat One', cursive;
+    font-size: 1.7rem;
+    text-transform: lowercase;
+    color: var(--coral);
+    padding: 16px 32px;
+    margin: 0 auto;
+    max-width: fit-content;
+    cursor: pointer;
+    transition: transform 0.2s ease;
   }
-  .today-actions .quick-btn{
-    font-size: 1.15rem;
+  .today-callout:hover{
+    transform: scale(1.03) rotate(-0.5deg);
   }
-  .today-actions .quick-btn.secondary{
+  .hl-today::before{
+    inset: 6% -4%;
+    transform: rotate(-1deg);
+    background: rgba(255,255,255,0.85);
+    transition: background 0.15s ease;
+  }
+  .today-callout:hover::before{
+    background: rgba(46, 139, 153, 0.5);
+  }
+  .today-callout.is-off{
     color: var(--ink-soft);
   }
-  .today-actions .quick-btn.secondary:hover{
-    color: var(--coral);
+  .today-callout #today-hours,
+  .today-callout #today-weather{
+    color: var(--ink-soft);
+    font-size: 1.3rem;
+  }
+  .today-sep{ opacity: 0.4; color: var(--ink-soft); }
+  .today-sub-link{
+    display: block;
+    text-align: center;
+    margin: 10px 0 40px;
+    font-family: 'Courier Prime', monospace;
+    font-size: 0.78rem;
+    font-style: italic;
+    color: var(--ink-soft);
+    opacity: 0.8;
+  }
+  .today-callout .pin-icon{
+    width: 18px;
+    height: 18px;
+    vertical-align: -3px;
+    margin-left: 4px;
+    color: var(--sky-blue);
   }
 
   /* ---------- WEEK STRIP ---------- */
@@ -523,18 +516,38 @@
     display: flex;
     gap: 10px;
     overflow-x: auto;
-    padding: 6px 4px 18px;
-    margin: 0 -4px;
+    overflow-y: visible;
+    padding: 22px 4px 24px;
+    margin: -16px -4px 0;
     scrollbar-width: thin;
   }
   .day-ticket{
+    position: relative;
+    display: block;
     flex: 0 0 104px;
-    background: var(--foam);
-    border: 2px dashed var(--line);
-    border-radius: 16px;
-    padding: 14px 8px 12px;
+    padding: 16px 8px 14px;
     text-align: center;
-    transition: transform 0.15s ease, box-shadow 0.15s ease;
+    text-decoration: none;
+    cursor: pointer;
+    transition: transform 0.15s ease;
+  }
+  .day-ticket::before{
+    content: "";
+    position: absolute;
+    inset: -2px;
+    z-index: -1;
+    background: var(--foam);
+    border: 2.5px solid var(--ink-soft);
+    border-radius: 15px 17px 16px 14px;
+    box-shadow: 3px 4px 0 rgba(104,54,41,0.16);
+    filter: url(#rough);
+    transition: background 0.15s ease;
+  }
+  a.day-ticket:hover{
+    transform: translateY(-3px);
+  }
+  a.day-ticket:hover::before{
+    background: rgba(46, 139, 153, 0.35);
   }
   .day-ticket .day-abbr{
     display: block;
@@ -549,7 +562,7 @@
     height: 20px;
     margin: 0 auto 6px;
     display: block;
-    color: var(--coral);
+    color: var(--sky-blue);
   }
   .day-ticket .day-loc{
     display: block;
@@ -559,18 +572,39 @@
     line-height: 1.3;
   }
   .day-ticket.is-today{
-    background: var(--coral);
-    border-style: solid;
-    border-color: var(--coral);
     transform: translateY(-6px) rotate(-2deg);
-    box-shadow: 0 6px 0 rgba(104,54,41,0.18);
+  }
+  a.day-ticket.is-today:hover{
+    transform: translateY(-9px) rotate(-2deg);
+  }
+  .day-ticket.is-today::before{
+    background: var(--coral);
+    border-color: var(--ink);
+    box-shadow: 2px 5px 0 rgba(104,54,41,0.22);
+  }
+  a.day-ticket.is-today:hover::before{
+    background: var(--coral);
   }
   .day-ticket.is-today .day-abbr,
   .day-ticket.is-today .day-loc{
     color: var(--foam);
   }
   .day-ticket.is-today .day-pin{ color: var(--foam); }
-  .day-ticket.is-off{ opacity: 0.55; }
+  .day-ticket.is-off{ opacity: 0.55; cursor: default; }
+  .status-stamp{
+    display: inline-block;
+    font-family: 'Courier Prime', monospace;
+    font-style: italic;
+    font-size: 0.68rem;
+    text-transform: lowercase;
+    letter-spacing: 0.02em;
+    color: var(--ink-soft);
+    background: rgba(201, 123, 146, 0.28);
+    border: 1.5px solid var(--rose);
+    border-radius: 999px;
+    padding: 1px 10px;
+    transform: rotate(-6deg);
+  }
   .week-strip-title{
     font-family: 'Mesa Lane', 'Allora', 'Bagel Fat One', cursive;
     text-transform: lowercase;
@@ -604,11 +638,11 @@
   }
   .social-link{
     display:flex;
-    color: var(--ink);
+    color: var(--rose);
     transition: color 0.15s ease, transform 0.15s ease;
   }
   .social-link:hover{
-    color: var(--sky-blue-text);
+    color: var(--coral);
     transform: translateY(-1px);
   }
 .social-icon{
@@ -620,23 +654,67 @@
 
   /* ---------- SOCIAL FOOTER ---------- */
   .site-footer{
+    position: relative;
     padding: 28px 0 40px;
     text-align: center;
   }
-  .wave-stamp{
-    width: 70px;
-    height: auto;
-    margin: 18px auto 0;
-    display: block;
+  .site-footer::before{
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    background:
+      linear-gradient(rgba(226,217,188,0.94), rgba(226,217,188,0.94)),
+      url("assets/img/menu-bg.jpg");
+    background-size: cover;
+    background-position: center 65%;
+    filter: saturate(0.55);
   }
+
   .site-footer .social-links{
     justify-content: center;
+  }
+  .wave-stamp-link{
+    display: block;
+    width: 100px;
+    margin: 26px auto 0;
+    transition: transform 0.2s ease;
+  }
+  .wave-stamp-link:hover{
+    transform: scale(1.06) rotate(-4deg);
+  }
+  .wave-stamp{
+    width: 100%;
+    aspect-ratio: 176 / 152;
+    display: block;
+    transform: rotate(3deg);
+    background-color: var(--coral);
+    -webkit-mask-image: url(assets/img/wave-stamp-coral.png);
+    mask-image: url(assets/img/wave-stamp-coral.png);
+    -webkit-mask-size: contain;
+    mask-size: contain;
+    -webkit-mask-repeat: no-repeat;
+    mask-repeat: no-repeat;
+    -webkit-mask-position: center;
+    mask-position: center;
+    transition: background-color 0.2s ease;
+  }
+  .wave-stamp-link:hover .wave-stamp{
+    background-color: var(--rose);
   }
 
   @media (max-width: 640px){
     nav.wrap{ flex-direction: column; align-items: center; text-align: center; }
     .logo{ margin-right: 0; justify-content: center; }
     .page-title{ font-size: 2.8rem; }
+  }
+  @media (prefers-reduced-motion: reduce){
+    *, *::before, *::after{
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
   }
 </style>
 </head>
@@ -674,56 +752,54 @@
     <h1 class="page-title">find us</h1>
     <p class="finder-intro">no storefront, no problem — we roam the coast in the trailer. here's exactly where to catch us today and all week.</p>
 
-    <div class="today-card">
-      <span id="today-tag" class="today-tag">today</span>
-      <img class="today-art" src="data:image/svg+xml;utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 160 120'%3E%3Cpath d='M14 96 C 40 70, 60 100, 86 74 S 130 60, 146 34' fill='none' stroke='%238A5A45' stroke-width='2.5' stroke-dasharray='1 9' stroke-linecap='round'/%3E%3Ccircle cx='14' cy='96' r='5' fill='%2325799B'/%3E%3Cg transform='translate(122,10)'%3E%3Cpath d='M24 6C11 6 1 16 1 29c0 18 23 40 23 40s23-22 23-40C47 16 37 6 24 6z' fill='%23B20E19' stroke='%23683629' stroke-width='2'/%3E%3Ccircle cx='24' cy='28' r='9' fill='%23F7E6CB'/%3E%3C/g%3E%3C/svg%3E" alt="" aria-hidden="true">
-      <p class="today-loc" id="today-location">Main Beach, Laguna</p>
-      <p class="today-meta" id="today-hours">8am – 1pm</p>
-      <p class="today-sub"><span id="today-weather-wrap"><span id="today-weather"></span></span></p>
-      <div class="today-actions">
-        <a id="today-link" href="#" target="_blank" rel="noopener" class="quick-btn">get directions</a>
-        <a href="#week" class="quick-btn secondary">see the whole week</a>
-      </div>
-    </div>
+    <a id="today-link" href="#" target="_blank" rel="noopener" class="today-callout hl hl-today" aria-label="Get directions to today's location">
+      <span id="today-location">Main Beach, Laguna</span>
+      <span class="today-sep">·</span>
+      <span id="today-hours">8am – 1pm</span>
+      <span class="today-sep" id="weather-sep" style="display:none;">·</span>
+      <span id="today-weather"></span>
+      <svg class="pin-icon" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 2C7.6 2 4 5.5 4 9.8 4 15.5 12 22 12 22s8-6.5 8-12.2C20 5.5 16.4 2 12 2z" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="9.5" r="2.6" fill="currentColor"/></svg>
+    </a>
+    <p class="today-sub-link">tap the banner to get directions</p>
 
     <div class="menu-section" id="week">
       <h2 class="week-strip-title">the weekly route</h2>
       <div class="week-strip">
-        <div class="day-ticket" data-day="Monday">
+        <a class="day-ticket" data-day="Monday" href="https://www.google.com/maps/dir/?api=1&destination=Main%20Beach%2C%20Laguna%20Beach%2C%20CA" target="_blank" rel="noopener">
           <svg class="day-pin" viewBox="0 0 24 24" fill="none"><path d="M12 2C7.6 2 4 5.5 4 9.8 4 15.5 12 22 12 22s8-6.5 8-12.2C20 5.5 16.4 2 12 2z" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="9.5" r="2.6" fill="currentColor"/></svg>
           <span class="day-abbr">mon</span>
           <span class="day-loc">Main Beach</span>
-        </div>
-        <div class="day-ticket" data-day="Tuesday">
+        </a>
+        <a class="day-ticket" data-day="Tuesday" href="https://www.google.com/maps/dir/?api=1&destination=Heisler%20Park%2C%20Laguna%20Beach%2C%20CA" target="_blank" rel="noopener">
           <svg class="day-pin" viewBox="0 0 24 24" fill="none"><path d="M12 2C7.6 2 4 5.5 4 9.8 4 15.5 12 22 12 22s8-6.5 8-12.2C20 5.5 16.4 2 12 2z" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="9.5" r="2.6" fill="currentColor"/></svg>
           <span class="day-abbr">tue</span>
           <span class="day-loc">Heisler Park</span>
-        </div>
+        </a>
         <div class="day-ticket" data-day="Wednesday">
           <svg class="day-pin" viewBox="0 0 24 24" fill="none"><path d="M12 2C7.6 2 4 5.5 4 9.8 4 15.5 12 22 12 22s8-6.5 8-12.2C20 5.5 16.4 2 12 2z" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="9.5" r="2.6" fill="currentColor"/></svg>
           <span class="day-abbr">wed</span>
-          <span class="day-loc">Off</span>
+          <span class="status-stamp">off</span>
         </div>
-        <div class="day-ticket" data-day="Thursday">
+        <a class="day-ticket" data-day="Thursday" href="https://www.google.com/maps/dir/?api=1&destination=Aliso%20Beach%2C%20Laguna%20Beach%2C%20CA" target="_blank" rel="noopener">
           <svg class="day-pin" viewBox="0 0 24 24" fill="none"><path d="M12 2C7.6 2 4 5.5 4 9.8 4 15.5 12 22 12 22s8-6.5 8-12.2C20 5.5 16.4 2 12 2z" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="9.5" r="2.6" fill="currentColor"/></svg>
           <span class="day-abbr">thu</span>
           <span class="day-loc">Aliso Beach</span>
-        </div>
-        <div class="day-ticket" data-day="Friday">
+        </a>
+        <a class="day-ticket" data-day="Friday" href="https://www.google.com/maps/dir/?api=1&destination=Main%20Beach%2C%20Laguna%20Beach%2C%20CA" target="_blank" rel="noopener">
           <svg class="day-pin" viewBox="0 0 24 24" fill="none"><path d="M12 2C7.6 2 4 5.5 4 9.8 4 15.5 12 22 12 22s8-6.5 8-12.2C20 5.5 16.4 2 12 2z" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="9.5" r="2.6" fill="currentColor"/></svg>
           <span class="day-abbr">fri</span>
           <span class="day-loc">Main Beach</span>
-        </div>
-        <div class="day-ticket" data-day="Saturday">
+        </a>
+        <a class="day-ticket" data-day="Saturday" href="https://www.google.com/maps/dir/?api=1&destination=Laguna%20Beach%20Farmers%20Market%2C%20Laguna%20Beach%2C%20CA" target="_blank" rel="noopener">
           <svg class="day-pin" viewBox="0 0 24 24" fill="none"><path d="M12 2C7.6 2 4 5.5 4 9.8 4 15.5 12 22 12 22s8-6.5 8-12.2C20 5.5 16.4 2 12 2z" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="9.5" r="2.6" fill="currentColor"/></svg>
           <span class="day-abbr">sat</span>
           <span class="day-loc">Farmers Market</span>
-        </div>
-        <div class="day-ticket" data-day="Sunday">
+        </a>
+        <a class="day-ticket" data-day="Sunday" href="https://www.google.com/maps/dir/?api=1&destination=Crystal%20Cove%20State%20Park%2C%20CA" target="_blank" rel="noopener">
           <svg class="day-pin" viewBox="0 0 24 24" fill="none"><path d="M12 2C7.6 2 4 5.5 4 9.8 4 15.5 12 22 12 22s8-6.5 8-12.2C20 5.5 16.4 2 12 2z" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="9.5" r="2.6" fill="currentColor"/></svg>
           <span class="day-abbr">sun</span>
           <span class="day-loc">Crystal Cove</span>
-        </div>
+        </a>
       </div>
     </div>
 
@@ -755,26 +831,31 @@
       if (schedule[d].hours) { nextOpen = d; break; }
     }
 
-    var tagEl = document.getElementById('today-tag');
     var locEl = document.getElementById('today-location');
     var hoursEl = document.getElementById('today-hours');
+    var sepEl = document.querySelector('.today-sep');
     var linkEl = document.getElementById('today-link');
     var isOff = !info.hours;
 
     if (isOff && nextOpen) {
-      if (tagEl) { tagEl.textContent = 'off today'; tagEl.classList.add('is-off'); }
-      if (locEl) locEl.textContent = 'back ' + nextOpen.toLowerCase() + ' at ' + schedule[nextOpen].location;
+      if (linkEl) linkEl.classList.add('is-off');
+      if (locEl) locEl.textContent = 'off today — back ' + nextOpen.toLowerCase() + ' at ' + schedule[nextOpen].location;
       if (hoursEl) hoursEl.textContent = schedule[nextOpen].hours;
       if (linkEl) linkEl.href = 'https://www.google.com/maps/dir/?api=1&destination=' + encodeURIComponent(schedule[nextOpen].map);
     } else {
-      if (tagEl) tagEl.textContent = 'today';
       if (locEl) locEl.textContent = info.location;
       if (hoursEl) hoursEl.textContent = info.hours;
       if (linkEl) linkEl.href = 'https://www.google.com/maps/dir/?api=1&destination=' + encodeURIComponent(info.map);
     }
 
     var ticket = document.querySelector('.day-ticket[data-day="' + today + '"]');
-    if (ticket) ticket.classList.add('is-today');
+    if (ticket) {
+      ticket.classList.add('is-today');
+      // center today's ticket within the scrollable week strip
+      requestAnimationFrame(function(){
+        ticket.scrollIntoView({ behavior: 'auto', inline: 'center', block: 'nearest' });
+      });
+    }
     Object.keys(schedule).forEach(function(d){
       if (!schedule[d].hours) {
         var t = document.querySelector('.day-ticket[data-day="' + d + '"]');
@@ -783,8 +864,7 @@
     });
 
     var weatherEl = document.getElementById('today-weather');
-    var weatherWrapEl = document.getElementById('today-weather-wrap');
-    if (weatherWrapEl) weatherWrapEl.style.display = 'none';
+    var weatherSepEl = document.getElementById('weather-sep');
     var weatherCodes = {
       0: "clear", 1: "mostly clear", 2: "partly cloudy", 3: "cloudy",
       45: "foggy", 48: "foggy",
@@ -794,17 +874,19 @@
       80: "showers", 81: "showers", 82: "heavy showers",
       95: "thunderstorms", 96: "thunderstorms", 99: "thunderstorms"
     };
-    fetch('https://api.open-meteo.com/v1/forecast?latitude=33.5427&longitude=-117.7854&current=temperature_2m,weather_code&temperature_unit=fahrenheit&timezone=America%2FLos_Angeles')
-      .then(function(r){ return r.json(); })
-      .then(function(data){
-        if (!data || !data.current) return;
-        var temp = Math.round(data.current.temperature_2m);
-        var code = data.current.weather_code;
-        var desc = weatherCodes[code] || "";
-        if (weatherEl) weatherEl.textContent = 'right now: ' + temp + '°' + (desc ? ', ' + desc : '');
-        if (weatherWrapEl && !isOff) weatherWrapEl.style.display = '';
-      })
-      .catch(function(){});
+    if (!isOff) {
+      fetch('https://api.open-meteo.com/v1/forecast?latitude=33.5427&longitude=-117.7854&current=temperature_2m,weather_code&temperature_unit=fahrenheit&timezone=America%2FLos_Angeles')
+        .then(function(r){ return r.json(); })
+        .then(function(data){
+          if (!data || !data.current) return;
+          var temp = Math.round(data.current.temperature_2m);
+          var code = data.current.weather_code;
+          var desc = weatherCodes[code] || "";
+          if (weatherEl) weatherEl.textContent = temp + '°' + (desc ? ' and ' + desc : '');
+          if (weatherSepEl) weatherSepEl.style.display = '';
+        })
+        .catch(function(){});
+    }
   })();
 </script>
 
@@ -818,7 +900,9 @@
       <svg class="social-icon" viewBox="0 0 32 32" aria-hidden="true" fill="currentColor"><path d="M16.656 1.029c1.637-0.025 3.262-0.012 4.886-0.025 0.054 2.031 0.878 3.859 2.189 5.213l-0.002-0.002c1.411 1.271 3.247 2.095 5.271 2.235l0.028 0.002v5.036c-1.912-0.048-3.71-0.489-5.331-1.247l0.082 0.034c-0.784-0.377-1.447-0.764-2.077-1.196l0.052 0.034c-0.012 3.649 0.012 7.298-0.025 10.934-0.103 1.853-0.719 3.543-1.707 4.954l0.020-0.031c-1.652 2.366-4.328 3.919-7.371 4.011l-0.014 0c-0.123 0.006-0.268 0.009-0.414 0.009-1.73 0-3.347-0.482-4.725-1.319l0.040 0.023c-2.508-1.509-4.238-4.091-4.558-7.094l-0.004-0.041c-0.025-0.625-0.037-1.25-0.012-1.862 0.49-4.779 4.494-8.476 9.361-8.476 0.547 0 1.083 0.047 1.604 0.136l-0.056-0.008c0.025 1.849-0.050 3.699-0.050 5.548-0.423-0.153-0.911-0.242-1.42-0.242-1.868 0-3.457 1.194-4.045 2.861l-0.009 0.030c-0.133 0.427-0.21 0.918-0.21 1.426 0 0.206 0.013 0.41 0.037 0.61l-0.002-0.024c0.332 2.046 2.086 3.59 4.201 3.59 0.061 0 0.121-0.001 0.181-0.004l-0.009 0c1.463-0.044 2.733-0.831 3.451-1.994l0.010-0.018c0.267-0.372 0.45-0.822 0.511-1.311l0.001-0.014c0.125-2.237 0.075-4.461 0.087-6.698 0.012-5.036-0.012-10.060 0.025-15.083z"/></svg>
     </a>
   </div>
-  <img class="wave-stamp" src="assets/img/wave-stamp.png" alt="" aria-hidden="true">
+  <a class="wave-stamp-link" href="index.html" aria-label="Redfish Coffee — home">
+    <div class="wave-stamp" role="img" aria-label=""></div>
+  </a>
 </footer>
 </body>
 </html>
